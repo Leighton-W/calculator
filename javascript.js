@@ -18,3 +18,9 @@ function multiply(a,b){
 }
 
 console.log(multiply(2,3))
+
+function divide(a,b){
+    return a / b;
+}
+
+console.log(divide(6,2))
