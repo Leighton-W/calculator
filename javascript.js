@@ -17,9 +17,9 @@ function divide(a,b){
 }
 
 
-const input1 = prompt("Please choose a number");
-const input2 = prompt("Please choose a number");
-const operator = prompt("Please select an operator(+,-,*,/)");
+const input1 = 2;
+const input2 = 3;
+const operator = "+";
 
 console.log(input1)
 console.log(input2)
@@ -39,3 +39,7 @@ function operation(input1, input2, operator){
 }
 
 console.log(operation(input1,input2,operator));
+
+const display = document.createElement("div");
+display.textContent = "This is a Div";
+document.body.appendChild(display);
