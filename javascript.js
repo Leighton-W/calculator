@@ -39,7 +39,3 @@ function operation(input1, input2, operator){
 }
 
 console.log(operation(input1,input2,operator));
-
-const display = document.createElement("div");
-display.textContent = "This is a Div";
-document.body.appendChild(display);
