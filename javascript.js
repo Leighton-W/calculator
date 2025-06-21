@@ -39,3 +39,21 @@ function operation(input1, input2, operator){
 }
 
 console.log(operation(input1,input2,operator));
+
+
+const keyPad = document.querySelector(".buttons");
+
+function keyPadSettings(a){
+    let keyPadDimension = 480 / a;
+    for (let i = 0; i < a * a; i++){
+        const button = document.createElement("button");
+        button.style.width = `${keyPadDimension}px`;
+        button.style.height =  `${keyPadDimension}px`;
+        keyPad.appendChild(button);
+        button.addEventListener('click', () => {
+            button.style.background = "black";
+        })
+    }
+}
+
+keyPadSettings(4);

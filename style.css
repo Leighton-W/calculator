@@ -8,5 +8,7 @@
 .buttons{
     display: flex;
     flex-wrap: wrap;
-    width: 150px;
+    border: solid;
+    width: 480px;
+    height: 480px;
 }
