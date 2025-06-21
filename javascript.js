@@ -40,7 +40,10 @@ function operation(input1, input2, operator){
 
 console.log(operation(input1,input2,operator));
 
-
+const keyArray = ['1', '2', '3',  '+',  
+                  '4',  '5',  '6',  '-',  
+                  '7',  '8',  '9',  '*',  
+                  '0',  '.',  '=',  '/',];
 const keyPad = document.querySelector(".buttons");
 
 function keyPadSettings(a){
@@ -49,6 +52,7 @@ function keyPadSettings(a){
         const button = document.createElement("button");
         button.style.width = `${keyPadDimension}px`;
         button.style.height =  `${keyPadDimension}px`;
+        button.textContent = keyArray[i];
         keyPad.appendChild(button);
         button.addEventListener('click', () => {
             button.style.background = "black";
