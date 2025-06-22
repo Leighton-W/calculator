@@ -40,22 +40,31 @@ function operation(input1, input2, operator){
 
 console.log(operation(input1,input2,operator));
 
+let currentInput = "";
+
 const keyArray = ['1', '2', '3',  '+',  
                   '4',  '5',  '6',  '-',  
                   '7',  '8',  '9',  '*',  
                   '0',  '.',  '=',  '/',];
+
 const keyPad = document.querySelector(".buttons");
+const display = document.querySelector(".display");
 
 function keyPadSettings(a){
     let keyPadDimension = 480 / a;
     for (let i = 0; i < a * a; i++){
         const button = document.createElement("button");
+        button.classList.add("key-pad");
         button.style.width = `${keyPadDimension}px`;
         button.style.height =  `${keyPadDimension}px`;
         button.textContent = keyArray[i];
         keyPad.appendChild(button);
         button.addEventListener('click', () => {
-            button.style.background = "black";
+            const value = button.textContent;
+
+            currentInput += value;
+            console.log(currentInput);
+            display.textContent = currentInput;
         })
     }
 }
