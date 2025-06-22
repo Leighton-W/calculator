@@ -56,27 +56,33 @@ const opers = ["+", "-", "*", "/"];
 const keyPad = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
-function keyPadSettings(a){
+function createButton(label, size) {
+    const button = document.createElement("button");
+    button.classList.add("key-pad");
+    button.style.width = `${size}px`;
+    button.style.height = `${size}px`;
+    button.textContent = label;
+    return button;
+}
+
+function handleButtonClick(value) {
+    if (nums.includes(value)) {
+        currentInput += value;
+        display.textContent = currentInput;
+    } else if (opers.includes(value)) {
+        firstInput = currentInput;
+        currentInput = "";
+        selectedOperator = value;
+    }
+}
+
+function keyPadSettings(a) {
     let keyPadDimension = 480 / a;
-    for (let i = 0; i < a * a; i++){
-        const button = document.createElement("button");
-        button.classList.add("key-pad");
-        button.style.width = `${keyPadDimension}px`;
-        button.style.height =  `${keyPadDimension}px`;
-        button.textContent = keyArray[i];
+    for (let i = 0; i < a * a; i++) {
+        const label = keyArray[i];
+        const button = createButton(label, keyPadDimension);
         keyPad.appendChild(button);
-        button.addEventListener('click', () => {
-            const value = button.textContent;
-            if(nums.includes(value)){
-                currentInput += value;
-                console.log(currentInput);
-                display.textContent = currentInput;
-            }else if(opers.includes(value)){
-                firstInput = currentInput;
-                currentInput = "0";
-                selectedOperator = value;
-            }
-        })
+        button.addEventListener("click", () => handleButtonClick(label));
     }
 }
 
