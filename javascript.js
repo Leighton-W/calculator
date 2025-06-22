@@ -17,31 +17,8 @@ function divide(a,b){
 }
 
 
-const input1 = 2;
-const input2 = 3;
-const operator = "+";
-
-console.log(input1)
-console.log(input2)
-console.log(operator)
-
-
-function operation(input1, input2, operator){
-    if (operator == "+"){
-        return input1 + input2;
-    }else if (operator == "-"){
-        return input1 - input2;
-    }else if (operator == "*"){
-        return input1 * input2;
-    }else if (operator == "/"){
-        return input1 / input2;
-    }
-}
-
-console.log(operation(input1,input2,operator));
-
 let currentInput = "";
-let firstInput = null;
+let savedInput = null;
 let selectedOperator = null;
 
 const keyArray = ['1', '2', '3',  '+',  
@@ -55,6 +32,18 @@ const opers = ["+", "-", "*", "/"];
 
 const keyPad = document.querySelector(".buttons");
 const display = document.querySelector(".display");
+
+function operation(a, b, selectedOperator){
+    if (selectedOperator == "+"){
+        return a + b;
+    }else if (selectedOperator == "-"){
+        return a - b;
+    }else if (selectedOperator == "*"){
+        return a * b;
+    }else if (selectedOperator == "/"){
+        return b !== 0 ? a / b : "Error";
+    }
+}
 
 function createButton(label, size) {
     const button = document.createElement("button");
@@ -70,9 +59,15 @@ function handleButtonClick(value) {
         currentInput += value;
         display.textContent = currentInput;
     } else if (opers.includes(value)) {
-        firstInput = currentInput;
+        savedInput = currentInput;
         currentInput = "";
         selectedOperator = value;
+    } else if (value == "="){
+        const result = operation(parseFloat(savedInput), parseFloat(currentInput), selectedOperator);
+        display.textContent = result;
+        currentInput = result.toString();
+        firstInput = "";
+        selectedOperator = "";
     }
 }
 
