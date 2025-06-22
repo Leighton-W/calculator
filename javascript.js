@@ -41,11 +41,17 @@ function operation(input1, input2, operator){
 console.log(operation(input1,input2,operator));
 
 let currentInput = "";
+let firstInput = null;
+let selectedOperator = null;
 
 const keyArray = ['1', '2', '3',  '+',  
                   '4',  '5',  '6',  '-',  
                   '7',  '8',  '9',  '*',  
                   '0',  '.',  '=',  '/',];
+
+const nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const opers = ["+", "-", "*", "/"];
+
 
 const keyPad = document.querySelector(".buttons");
 const display = document.querySelector(".display");
@@ -61,10 +67,15 @@ function keyPadSettings(a){
         keyPad.appendChild(button);
         button.addEventListener('click', () => {
             const value = button.textContent;
-
-            currentInput += value;
-            console.log(currentInput);
-            display.textContent = currentInput;
+            if(nums.includes(value)){
+                currentInput += value;
+                console.log(currentInput);
+                display.textContent = currentInput;
+            }else if(opers.includes(value)){
+                firstInput = currentInput;
+                currentInput = "0";
+                selectedOperator = value;
+            }
         })
     }
 }
