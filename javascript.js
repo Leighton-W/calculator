@@ -62,11 +62,11 @@ function handleButtonClick(value) {
         savedInput = currentInput;
         currentInput = "";
         selectedOperator = value;
-    } else if (value == "="){
+    } else if (savedInput !== null && selectedOperator && currentInput !== ""){
         const result = operation(parseFloat(savedInput), parseFloat(currentInput), selectedOperator);
         display.textContent = result;
         currentInput = result.toString();
-        firstInput = "";
+        savedInput = null;
         selectedOperator = "";
     }
 }
